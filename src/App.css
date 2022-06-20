@@ -54,9 +54,18 @@
 }
 
 .single-nav-link {
-  text-decoration: none;
+  background: none;
+  color: rgb(82, 80, 80);
+}
+
+.single-nav-link-active {
   color: white;
   background: rgb(152, 190, 32);
+}
+
+.single-nav-link,
+.single-nav-link-active {
+  text-decoration: none;
   padding: 5px 0 5px 5px;
   height: 35px;
   font-size: 20px;

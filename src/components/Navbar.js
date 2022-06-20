@@ -25,7 +25,16 @@ const Navbar = () => {
         </div>
         <div className="nav-links">
           {
-            links.map((link) => <NavLink onClick={handleMenu} key={link.id} to={link.path} className="single-nav-link">{link.title}</NavLink>)
+            links.map((link) => (
+              <NavLink
+                onClick={handleMenu}
+                key={link.id}
+                to={link.path}
+                className={({ isActive }) => (isActive ? 'single-nav-link-active' : 'single-nav-link')}
+              >
+                {link.title}
+              </NavLink>
+            ))
           }
         </div>
       </nav>

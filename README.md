@@ -100,4 +100,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [LICENSED](./LICENSE.md).
+This project is [LICENSED](./LICENSE).

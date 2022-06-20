@@ -20,10 +20,12 @@ const Navbar = () => {
       <button type="button" className="nav-toggle-btn" onClick={handleMenu}><img src={openBtn} alt="nav-open-button" className="nav-open-btn nav-btns" /></button>
       <nav className={menu ? 'nav-container' : 'nav-container-hidden'}>
         <button type="button" className="nav-toggle-btn" onClick={handleMenu}><img src={closeBtn} alt="nav-open-button" className="nav-open-btn nav-btns" /></button>
-        <div><img className="nav-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_logo_%28gray%29.svg/2048px-BMW_logo_%28gray%29.svg.png" alt="logo" srcSet="" /></div>
+        <div className="nav-logo-img-container">
+          <img className="nav-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_logo_%28gray%29.svg/2048px-BMW_logo_%28gray%29.svg.png" alt="logo" srcSet="" />
+        </div>
         <div className="nav-links">
           {
-            links.map((link) => <NavLink key={link.id} to={link.path} className="single-nav-link">{link.title}</NavLink>)
+            links.map((link) => <NavLink onClick={handleMenu} key={link.id} to={link.path} className="single-nav-link">{link.title}</NavLink>)
           }
         </div>
       </nav>

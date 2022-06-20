@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Homepage = () => (
-  <div>
+  <section>
     <h1>Homepage</h1>
-  </div>
+  </section>
 );
 
 export default Homepage;

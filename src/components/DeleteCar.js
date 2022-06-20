@@ -1,9 +1,9 @@
 import React from 'react';
 
 const DeleteCar = () => (
-  <div>
+  <section>
     <h1>Delete Car</h1>
-  </div>
+  </section>
 );
 
 export default DeleteCar;

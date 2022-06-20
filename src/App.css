@@ -3,3 +3,54 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.nav-container-hidden {
+  transform: translateX(-101%);
+}
+
+.nav-container {
+  background-color: white;
+  transform: translateX(0%);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.nav-logo {
+  width: 50px;
+}
+
+.nav-container,
+.nav-container-hidden {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 150px;
+  transition: all 250ms ease-in-out;
+  padding-left: 10px;
+}
+
+.nav-btns {
+  width: 30px;
+  cursor: pointer;
+}
+
+.nav-toggle-btn {
+  background: none;
+  border: none;
+  margin: 10px 0 0 10px;  
+}
+
+.nav-links {
+  margin-top: 150px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.single-nav-link {
+  text-decoration: none;
+  color: white;
+  background: rgb(152,190,32);
+  padding: 5px 0 5px 5px;
+  height: 30px;
+}

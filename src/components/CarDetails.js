@@ -1,9 +1,9 @@
 import React from 'react';
 
 const CarDetails = () => (
-  <div>
+  <section>
     <h1>Car Details</h1>
-  </div>
+  </section>
 );
 
 export default CarDetails;

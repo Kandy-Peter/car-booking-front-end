@@ -1,9 +1,9 @@
 import React from 'react';
 
 const AddReservation = () => (
-  <div>
+  <section>
     <h1>Add Reservation</h1>
-  </div>
+  </section>
 );
 
 export default AddReservation;

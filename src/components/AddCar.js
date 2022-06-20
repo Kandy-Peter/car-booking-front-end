@@ -1,9 +1,9 @@
 import React from 'react';
 
 const AddCar = () => (
-  <div>
+  <section>
     <h1>Add Car</h1>
-  </div>
+  </section>
 );
 
 export default AddCar;

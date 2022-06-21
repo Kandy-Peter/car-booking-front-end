@@ -87,13 +87,15 @@ li {
   flex-direction: column;
   justify-content: space-between;
   margin: 20px 5px;
-  background-color: rgb(76, 135, 139);
+  background-color: rgb(152,190,32);
   border-radius: 5px;
 }
 
 .car-image {
   width: 100%;
   border-radius: 5px;
+  height: 140px;
+  object-fit: cover;
 }
 
 .car-details {
@@ -111,18 +113,20 @@ li {
 
 .car-dlt-btn {
   padding: 5px 10px;
-  background-color: rgb(209, 56, 33);
-  border: none;
-  color: white;
+  background-color: white;
+  border: 1px solid rgb(152,190,32);
+  border-radius: 5px;
+  color: black;
   font-weight: bold;
   cursor: pointer;
 }
 
 .car-dlt-btn:hover {
-  color: rgb(209, 56, 33);
-  background-color: white;
-  border: 1px solid rgb(209, 56, 33);
+  color: white;
+  background-color: rgb(152,190,32);
+  border: 1px solid white;
   transition: 0.3s ease-in-out;
+  font-weight: bolder;
 }
 
 @media screen and (min-width: 768px) {

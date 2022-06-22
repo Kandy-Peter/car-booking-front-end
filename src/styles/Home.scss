@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.home-container {
+  width: 100%;
+  height: 100%;
+
+  img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    background-color: #fefefe;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .cards-container {
+    border: 1px solid blue;
+    width: 80%;
+    margin: 0 auto;
+    
+    .car-card {
+      height: 200px;
+      width: 200px;
+    }   
+  }
+}

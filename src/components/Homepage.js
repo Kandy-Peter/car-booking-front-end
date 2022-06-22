@@ -17,10 +17,10 @@ const Homepage = () => {
     className: 'center',
     centerMode: true,
     infinite: true,
-    centerPadding: '60px',
+    centerPadding: '100px',
     dots: true,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 2,
     lazyLoad: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -30,7 +30,7 @@ const Homepage = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 2,
           infinite: true,
           dots: true,
         },
@@ -48,6 +48,8 @@ const Homepage = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          nextArrow: false,
+          prevArrow: false,
         },
       },
     ],
@@ -56,23 +58,24 @@ const Homepage = () => {
   return (
     <div className="home-container">
       <h1>Available Cars</h1>
+      <h5>Check our best available cars</h5>
       <div className="cards-container caroussel">
-        <div className="caroussel-inner">
-          <Slider {...settings}>
-            {!cars.length ? <Loading /> : (
-              cars.map((car) => (
-                <Link to={`car/${car.name}`} key={car.id}>
-                  <div className="car-card">
-                    <img src={Jeep} alt={car.name} />
-                    <h2>{car.name}</h2>
-                    <h3>{car.model}</h3>
-                    <p>{car.per_day_amount}</p>
+        <Slider {...settings}>
+          {!cars.length ? <Loading /> : (
+            cars.map((car) => (
+              <Link to={`car/${car.name}`} key={car.id}>
+                <div className="car-card">
+                  <img src={Jeep} alt={car.name} />
+                  <div className="descript">
+                    <h2>
+                      {car.name.slice(0, 9)}
+                    </h2>
                   </div>
-                </Link>
-              ))
-            )}
-          </Slider>
-        </div>
+                </div>
+              </Link>
+            ))
+          )}
+        </Slider>
       </div>
     </div>
   );

@@ -7,11 +7,12 @@ import closeBtn from '../assets/images/close-nav.svg';
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const links = [
-    { id: 1, path: '/', title: 'Home' },
-    { id: 2, path: '/add_car', title: 'Add Car' },
-    { id: 3, path: '/delete_cars', title: 'Delete Car' },
-    { id: 4, path: '/create_reservation', title: 'Reserve Car' },
-    { id: 5, path: '/my_reservations', title: 'My Reservations' },
+    { id: 1, path: '/add_car', title: 'Add Car' },
+    { id: 2, path: '/delete_cars', title: 'Delete Car' },
+    { id: 3, path: '/create_reservation', title: 'Reserve Car' },
+    { id: 4, path: '/my_reservations', title: 'My Reservations' },
+    { id: 5, path: '/registeration', title: 'Signup' },
+    { id: 6, path: '/login', title: 'Login' },
   ];
   const handleMenu = () => setMenu(!menu);
 
@@ -21,7 +22,7 @@ const Navbar = () => {
       <nav className={menu ? 'nav-container' : 'nav-container-hidden'}>
         <button type="button" className="nav-toggle-btn" onClick={handleMenu}><img src={closeBtn} alt="nav-open-button" className="nav-open-btn nav-btns" /></button>
         <div className="nav-logo-img-container">
-          <img className="nav-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_logo_%28gray%29.svg/2048px-BMW_logo_%28gray%29.svg.png" alt="logo" srcSet="" />
+          <NavLink to="/"><img className="nav-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_logo_%28gray%29.svg/2048px-BMW_logo_%28gray%29.svg.png" alt="logo" srcSet="" /></NavLink>
         </div>
         <div className="nav-links">
           {
@@ -37,6 +38,7 @@ const Navbar = () => {
             ))
           }
         </div>
+        <button className="sign-out-btn" type="button">Sign out</button>
       </nav>
     </>
   );

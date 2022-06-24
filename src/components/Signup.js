@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { setLocalStorage } from '../logics/localStore';
-import { fetchUsers } from '../redux/user/user';
+import { fetchUsers, signup } from '../redux/user/user';
 
 const Signup = () => {
   const store = useSelector((state) => state.userReducer);
@@ -27,8 +26,10 @@ const Signup = () => {
           throw error;
         } if (index === store.length - 1) {
           if (password === confirmPass) {
-            const localData = { user_id: new Date().getTime().toString(), loggedIn: true };
-            setLocalStorage(localData);
+            const data = {
+              name, email, password, id: new Date().getTime().toString(),
+            };
+            dispatch(signup(data));
             navigate('/');
           }
         }

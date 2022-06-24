@@ -1,19 +1,9 @@
-import React, { useEffect } from 'react';
-import { getLocalStorage, setLocalStorage } from '../logics/localStore';
+import React from 'react';
 
-const Homepage = () => {
-  useEffect(() => {
-    if (getLocalStorage() === null || getLocalStorage() === undefined) {
-      setLocalStorage({ LoggedIn: false, user_id: '' });
-    }
-    console.log(getLocalStorage());
-  }, []);
-
-  return (
-    <section>
-      <h1>Homepage</h1>
-    </section>
-  );
-};
+const Homepage = () => (
+  <section>
+    <h1>Homepage</h1>
+  </section>
+);
 
 export default Homepage;

@@ -15,14 +15,15 @@ const Signup = () => {
   const [confirmPass, setConfirmPass] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState();
   const [statusMessage, setStatusMessage] = useState('');
+  const [emailStatus, setEmailStatus] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const error = { error: 'Email Exists' };
     try {
       store.forEach((storeUser, index) => {
-        if (email === storeUser) {
-          setStatusMessage('Email Already Exists');
+        if (email === storeUser.email) {
+          setEmailStatus('Email Already Exists');
           throw error;
         } if (index === store.length - 1) {
           if (password === confirmPass) {
@@ -84,6 +85,7 @@ const Signup = () => {
         <input onChange={handleInput} className="input-field" type="email" name="email" id="signup-email-field" placeholder="Email" required />
         <input onChange={handleInput} className="input-field" type="password" name="password" id="signup-password-confirmation-field" placeholder="Password" required />
         <input onChange={handleInput} onFocus={(e) => verifyPassword(e.target.value, password)} className={passwordConfirmation ? 'input-field' : 'input-field input-field-red'} type="password" name="confirm-password" id="signup-password-field" placeholder="Confirm Password" required />
+        <small className="register-form-error-msg">{emailStatus}</small>
         <small className={passwordConfirmation ? 'register-form-success-msg' : 'register-form-error-msg'}>{statusMessage}</small>
         <p className="register-to-login">
           Already a member?

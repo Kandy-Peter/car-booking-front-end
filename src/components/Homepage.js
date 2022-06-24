@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const Homepage = () => (
-  <section>
-    <h1>Homepage</h1>
-  </section>
-);
+const Homepage = () => {
+  useEffect(() => {
+    console.log('working');
+  }, []);
+
+  return (
+    <section>
+      <h1>Homepage</h1>
+    </section>
+  );
+};
 
 export default Homepage;

@@ -65,7 +65,11 @@ li {
   height: 250px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+
+.logged-out {
+  justify-content: flex-end;
 }
 
 .single-nav-link {
@@ -81,7 +85,7 @@ li {
 .single-nav-link,
 .single-nav-link-active {
   text-decoration: none;
-  padding: 5px 0 5px 5px;
+  padding: 11px 0 35px 5px;
   height: 35px;
   font-size: 20px;
   font-weight: bold;
@@ -153,7 +157,7 @@ li {
 .register-page-heading,
 .login-page-heading {
   text-align: center;
-  font-size: 29px;
+  font-size: 39px;
   font-family: 'Times New Roman', Times, serif;
 }
 

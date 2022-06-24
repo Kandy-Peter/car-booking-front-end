@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
+import { getLocalStorage, setLocalStorage } from '../logics/localStore';
 
 const Homepage = () => {
   useEffect(() => {
-    console.log('working');
+    if (getLocalStorage() === null || getLocalStorage() === undefined) {
+      setLocalStorage({ LoggedIn: false, user_id: '' });
+    }
+    console.log(getLocalStorage());
   }, []);
 
   return (

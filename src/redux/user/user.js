@@ -16,9 +16,7 @@ export const purgeUsers = (payload) => ({
 });
 
 export const fetchUsers = () => (dispatch) => {
-  console.log('working');
   fetch(userURL).then((res) => res.json()).then((data) => {
-    console.log(data);
     dispatch(getUsers(data));
   });
 };

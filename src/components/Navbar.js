@@ -9,7 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const [menu, setMenu] = useState(false);
-  const [loginStatus, setLoginStatus] = useState(getLocalStorage().loggedIn);
+  const [loginStatus, setLoginStatus] = useState(!getLocalStorage() ? setLocalStorage({ user_id: '', loggedIn: false }) : getLocalStorage());
   const loggedInLinks = [
     { id: 1, path: '/add_car', title: 'Add Car' },
     { id: 2, path: '/delete_cars', title: 'Delete Car' },

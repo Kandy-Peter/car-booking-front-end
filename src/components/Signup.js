@@ -18,10 +18,22 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password === confirmPass) {
-      const localData = { user_id: new Date().getTime().toString(), loggedIn: true };
-      setLocalStorage(localData);
-      navigate('/');
+    const error = { error: 'Email Exists' };
+    try {
+      store.forEach((storeUser, index) => {
+        if (email === storeUser) {
+          setStatusMessage('Email Already Exists');
+          throw error;
+        } if (index === store.length - 1) {
+          if (password === confirmPass) {
+            const localData = { user_id: new Date().getTime().toString(), loggedIn: true };
+            setLocalStorage(localData);
+            navigate('/');
+          }
+        }
+      });
+    } catch (e) {
+      if (e !== error) throw e;
     }
   };
 

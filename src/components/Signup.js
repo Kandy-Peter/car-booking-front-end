@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { fetchUsers, signup } from '../redux/user/user';
+import { setLocalStorage } from '../logics/localStore';
+import userURL from '../logics/urls';
+import { fetchUsers, postUser } from '../redux/user/user';
 
 const Signup = () => {
   const store = useSelector((state) => state.userReducer);
@@ -16,24 +18,52 @@ const Signup = () => {
   const [statusMessage, setStatusMessage] = useState('');
   const [emailStatus, setEmailStatus] = useState('');
 
+  const signup = (user) => {
+    fetch(userURL, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify(user),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === 'SUCCESS') {
+          dispatch(postUser(user));
+          const localData = { user_id: user.id, loggedIn: true };
+          setLocalStorage(localData);
+          navigate('/');
+        }
+        return data;
+      });
+  };
+
+  const signupUser = () => {
+    if (password === confirmPass) {
+      const data = {
+        name, email, password, id: new Date().getTime().toString(),
+      };
+      signup(data);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const error = { error: 'Email Exists' };
     try {
-      store.forEach((storeUser, index) => {
-        if (email === storeUser.email) {
-          setEmailStatus('Email Already Exists');
-          throw error;
-        } if (index === store.length - 1) {
-          if (password === confirmPass) {
-            const data = {
-              name, email, password, id: new Date().getTime().toString(),
-            };
-            dispatch(signup(data));
-            navigate('/');
+      if (store.length !== 0) {
+        store.forEach((storeUser, index) => {
+          if (email === storeUser.email) {
+            setEmailStatus('Email Already Exists');
+            throw error;
           }
-        }
-      });
+          if (store.length === 0 || index === store.length - 1) {
+            signupUser();
+          }
+        });
+      } else {
+        signupUser();
+      }
     } catch (e) {
       if (e !== error) throw e;
     }
@@ -82,10 +112,10 @@ const Signup = () => {
     <section className="authentication-section">
       <h1 className="register-page-heading">Sign Up</h1>
       <form id="registeration-form" onSubmit={handleSubmit}>
-        <input onChange={handleInput} className="input-field" type="text" name="name" id="signup-name-field" placeholder="Full Name" required />
+        <input onChange={handleInput} className="input-field" type="text" name="name" id="signup-name-field" placeholder="Full Name" required minLength="8" maxLength="100" />
         <input onChange={handleInput} className="input-field" type="email" name="email" id="signup-email-field" placeholder="Email" required />
-        <input onChange={handleInput} className="input-field" type="password" name="password" id="signup-password-confirmation-field" placeholder="Password" required />
-        <input onChange={handleInput} onFocus={(e) => verifyPassword(e.target.value, password)} className={passwordConfirmation ? 'input-field' : 'input-field input-field-red'} type="password" name="confirm-password" id="signup-password-field" placeholder="Confirm Password" required />
+        <input onChange={handleInput} className="input-field" type="password" name="password" id="signup-password-confirmation-field" placeholder="Password" required minLength="8" />
+        <input onChange={handleInput} onFocus={(e) => verifyPassword(e.target.value, password)} className={passwordConfirmation ? 'input-field' : 'input-field input-field-red'} type="password" name="confirm-password" id="signup-password-field" placeholder="Confirm Password" minLength="8" required />
         <small className="register-form-error-msg">{emailStatus}</small>
         <small className={passwordConfirmation ? 'register-form-success-msg' : 'register-form-error-msg'}>{statusMessage}</small>
         <p className="register-to-login">

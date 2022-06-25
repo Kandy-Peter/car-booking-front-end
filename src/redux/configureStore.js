@@ -1,14 +1,13 @@
-// import logger from 'redux-logger';
-import { combineReducers, createStore } from 'redux';
-// import thunk from 'redux-thunk';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 import reservationReducers from './Reservations/reservation';
+import userReducer from './user/user';
 
-const reducer = combineReducers({
-  allReservation: reservationReducers,
+const reducers = combineReducers({
+  userReducer, allReservation: reservationReducers,
 });
-/* eslint-disable no-underscore-dangle */
-const store = createStore(reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-/* eslint-enable */
+
+const store = createStore(reducers, applyMiddleware(logger, thunk));
+
 export default store;
-// applyMiddleware(logger, thunk))

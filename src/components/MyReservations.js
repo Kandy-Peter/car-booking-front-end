@@ -23,7 +23,7 @@ const MyReservations = () => {
             <td>Id</td>
             <td>City</td>
             <td>data</td>
-            <td>Operation</td>
+            <td className="d-flex justify-content-center">Operation</td>
           </tr>
         </thead>
         <tbody>

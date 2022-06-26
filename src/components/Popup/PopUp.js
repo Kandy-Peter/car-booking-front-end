@@ -8,10 +8,10 @@ const PopUp = ({
   detailsId, detailsCity, trigger, setTrigger,
 }) => {
   const [value, onChange] = useState(new Date());
-  const [updatedCity, setCity] = useState('');
+  const [updatedCity, setCity] = useState(detailsCity);
 
   const upDateOperation = async (id) => {
-    await axios.put(`http://[::1]:3000/api/v1/reservation/${id}`, {
+    await axios.put(`http://[::1]:4000/api/v1/reservation/${id}`, {
       city: updatedCity,
       date: value,
     });
@@ -30,7 +30,7 @@ const PopUp = ({
             City:
             <input id="city" type="text" className="form-control" defaultValue={detailsCity} onChange={(e) => { setCity(e.target.value); }} />
           </label>
-          <DatePicker className="date" onChange={onChange} value={value} />
+          <DatePicker format="MM-dd-y" className="date" onChange={onChange} value={value} />
           <button type="submit" onClick={() => { handelEdit(detailsId); }} className="btn btn-primary">Submit</button>
         </form>
       </div>
@@ -38,7 +38,7 @@ const PopUp = ({
   ) : '';
 };
 PopUp.defaultProps = {
-  detailsId: '',
+  detailsId: 1,
   detailsCity: '',
   trigger: false,
   setTrigger: false,
@@ -46,7 +46,7 @@ PopUp.defaultProps = {
 PopUp.propTypes = {
   detailsId: PropTypes.number,
   detailsCity: PropTypes.string,
-  trigger: PropTypes.string,
+  trigger: PropTypes.bool,
   setTrigger: PropTypes.func,
 };
 export default PopUp;

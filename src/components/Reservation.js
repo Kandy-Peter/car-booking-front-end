@@ -8,14 +8,14 @@ import PopUp from './Popup/PopUp';
 const Reservation = ({ id, city, date }) => {
   const dispatch = useDispatch();
   const [buttonPopup, SetButtonPopup] = useState(false);
-  const [details, setDetails] = useState({ city: '', date: '' });
+  const [details, setDetails] = useState({ id: 1, city: '', date: '' });
 
   const deleteOperation = (id) => {
-    axios.delete(`http://[::1]:3000/api/v1/reservation/${id}`);
+    axios.delete(`http://[::1]:4000/api/v1/reservation/${id}`);
   };
 
   const showOperation = async (id) => {
-    const response = await axios.get(`http://[::1]:3000/api/v1/reservation/${id}`);
+    const response = await axios.get(`http://[::1]:4000/api/v1/reservation/${id}`);
     setDetails(response.data.data);
   };
 
@@ -27,7 +27,6 @@ const Reservation = ({ id, city, date }) => {
     SetButtonPopup(true);
     showOperation(id);
   };
-  const { detailsId, detailsCity } = details;
   return (
     <tr>
       <td>{id}</td>
@@ -44,8 +43,8 @@ const Reservation = ({ id, city, date }) => {
         </button>
 
         <PopUp
-          detailsId={detailsId}
-          detailsCity={detailsCity}
+          detailsId={details.id}
+          detailsCity={details.city}
           trigger={buttonPopup}
           setTrigger={SetButtonPopup}
         />

@@ -19,7 +19,7 @@ export const deleteData = (id) => ({
 
 });
 export const createData = (reservation) => ({
-  type: DELETE_DATA,
+  type: CREATE_DATA,
   payload: reservation,
 
 });

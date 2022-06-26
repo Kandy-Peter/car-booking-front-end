@@ -8,7 +8,7 @@ const MyReservations = () => {
   const reservations = useSelector((state) => state.allReservation.reservation);
   const dispatch = useDispatch();
   const fetchReservations = async () => {
-    const response = await axios.get('http://[::1]:3000/api/v1/reservation');
+    const response = await axios.get('http://[::1]:4000/api/v1/reservation');
     dispatch(setData(response.data.data));
   };
   useEffect(() => {

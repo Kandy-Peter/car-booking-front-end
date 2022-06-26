@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteData } from '../redux/Reservations/reservation';
 import PopUp from './Popup/PopUp';
 
-const Reservation = ({ data }) => {
-  const { id, city, date } = data;
+const Reservation = ({ id, city, date }) => {
   const dispatch = useDispatch();
   const [buttonPopup, SetButtonPopup] = useState(false);
   const [details, setDetails] = useState({ city: '', date: '' });
@@ -27,6 +27,7 @@ const Reservation = ({ data }) => {
     SetButtonPopup(true);
     showOperation(id);
   };
+  const { detailsId, detailsCity } = details;
   return (
     <tr>
       <td>{id}</td>
@@ -41,11 +42,28 @@ const Reservation = ({ data }) => {
         >
           Edit
         </button>
-        <PopUp details={details} trigger={buttonPopup} setTrigger={SetButtonPopup} />
+
+        <PopUp
+          detailsId={detailsId}
+          detailsCity={detailsCity}
+          trigger={buttonPopup}
+          setTrigger={SetButtonPopup}
+        />
+
       </td>
     </tr>
 
   );
+};
+Reservation.defaultProps = {
+  id: '',
+  city: '',
+  date: '',
+};
+Reservation.propTypes = {
+  id: PropTypes.number,
+  city: PropTypes.string,
+  date: PropTypes.string,
 };
 
 export default Reservation;

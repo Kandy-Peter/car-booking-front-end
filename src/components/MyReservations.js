@@ -28,10 +28,11 @@ const MyReservations = () => {
         </thead>
         <tbody>
           {
-  reservations.map((reservation) => (
-    <Reservation key={reservation.id} data={reservation} />
-  ))
-    }
+            reservations.map((reservation) => {
+              const { id, city, date } = reservation;
+              return (<Reservation key={reservation.id} id={id} city={city} date={date} />);
+            })
+}
         </tbody>
       </table>
     </section>

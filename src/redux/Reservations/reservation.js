@@ -1,6 +1,8 @@
 // Action Types
 const FETCH_DATA = 'FETCH_DATA';
 const DELETE_DATA = 'DELETE_DATA';
+const CREATE_DATA = 'CREATE_DATA';
+
 // Initial State
 const initialState = {
   reservation: [],
@@ -16,7 +18,11 @@ export const deleteData = (id) => ({
   payload: id,
 
 });
+export const createData = (reservation) => ({
+  type: DELETE_DATA,
+  payload: reservation,
 
+});
 // reducer
 
 const reservationReducers = (state = initialState, action) => {
@@ -28,6 +34,10 @@ const reservationReducers = (state = initialState, action) => {
       return {
         ...state,
         reservation: state.reservation.filter((item) => item.id !== action.payload),
+      };
+    case CREATE_DATA:
+
+      return {
       };
     default:
       return state;

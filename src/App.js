@@ -8,6 +8,7 @@ import DeleteCar from './components/DeleteCar';
 import AddReservation from './components/AddReservation';
 import MyReservations from './components/MyReservations';
 import Loading from './components/Loading';
+import CarDetails from './components/CarDetails';
 
 function App() {
   const cars = useSelector((state) => state.reducers.cars);
@@ -20,7 +21,7 @@ function App() {
         ) : (
           <Route path="/" element={<Homepage />} />
         )}
-        {/* <Route path="/" element={<Homepage />} /> */}
+        <Route exact path="/car/:name" exactly element={<CarDetails />} />
         <Route path="/add_car" element={<AddCar />} />
         <Route path="/delete_cars" element={<DeleteCar />} />
         <Route path="/create_reservation" element={<AddReservation />} />

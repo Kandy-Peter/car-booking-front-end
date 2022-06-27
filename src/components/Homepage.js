@@ -6,7 +6,6 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../styles/Home.scss';
-import Loading from './Loading';
 import Jeep from '../assets/images/7vylxq_large.png';
 import { SampleNextArrow, SamplePrevArrow } from './arrows';
 
@@ -88,7 +87,7 @@ const Homepage = () => {
       <h5>Check our best available cars</h5>
       <div className="cards-container">
         <Slider {...settings}>
-          {!cars.length ? <Loading /> : (
+          {
             cars.map((car) => (
               <Link to={`car/${car.name}`} key={car.id}>
                 <div className="car-card">
@@ -101,7 +100,7 @@ const Homepage = () => {
                 </div>
               </Link>
             ))
-          )}
+          }
         </Slider>
       </div>
     </div>

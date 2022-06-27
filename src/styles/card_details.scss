@@ -9,7 +9,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+
   img {
     width: 60%;
   }
@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    
+
     h2 {
       margin-bottom: 0.8rem;
     }
@@ -63,25 +63,17 @@
   }
 }
 
-@media  screen and (max-width: 640px){
+@media screen and (max-width: 640px) {
   .car_container {
     width: 100%;
-    position: absolute;
-    height: 100%;
     right: 0%;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
+
     img {
       margin-top: 1.8rem;
       width: 75%;
     }
-  
+
     .car_details {
       width: 95%;
       position: relative;
@@ -89,31 +81,18 @@
       h2 {
         margin-bottom: 0.2rem;
       }
-  
+
       ul {
         margin: 18px 0;
         width: 100%;
-  
-        li {
-          text-align: left;
-          padding: 10px;
-          height: 40px;
-          list-style-type: none;
-          display: flex;
-          justify-content: space-between;
-  
-          &:nth-child(odd) {
-            background: #e2e3e5;
-          }
-        }
       }
-  
+
       .desc_short {
         position: absolute;
         left: 12px;
         bottom: 2rem;
       }
-  
+
       .reserve-btn {
         margin-top: 0.5rem;
       }

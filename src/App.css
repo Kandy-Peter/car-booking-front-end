@@ -6,12 +6,14 @@
 
 .nav-container-hidden {
   transform: translateX(-101%);
+  z-index: 100;
 }
 
 .nav-container {
   background-color: white;
   transform: translateX(0%);
   border: 1px solid rgba(0, 0, 0, 0.2);
+  z-index: 100;
 }
 
 .nav-logo-img-container {

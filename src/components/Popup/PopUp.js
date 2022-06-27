@@ -1,24 +1,30 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './popup.css';
-import DatePicker from 'react-date-picker';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useSelector } from 'react-redux';
+
 import PropTypes from 'prop-types';
 
 const PopUp = ({
   detailsId, detailsCity, trigger, setTrigger,
 }) => {
-  const [value, onChange] = useState(new Date());
+  const cars = useSelector((state) => state.allReservation.cars);
+  const [selectedDate, setSelectedDate] = useState();
   const [updatedCity, setCity] = useState(detailsCity);
-
+  const [option, setOption] = useState(1);
   const upDateOperation = async (id) => {
     await axios.put(`http://[::1]:4000/api/v1/reservation/${id}`, {
       city: updatedCity,
-      date: value,
+      date: selectedDate,
+      car_id: option,
     });
   };
   const handelEdit = (id) => {
     upDateOperation(id);
   };
+
   return (trigger) ? (
     <div className="popup">
       <div className="popup-inner">
@@ -30,8 +36,36 @@ const PopUp = ({
             City:
             <input id="city" type="text" className="form-control" defaultValue={detailsCity} onChange={(e) => { setCity(e.target.value); }} />
           </label>
-          <DatePicker format="MM-dd-y" className="date" onChange={onChange} value={value} />
-          <button type="submit" onClick={() => { handelEdit(detailsId); }} className="btn btn-primary">Submit</button>
+          <label htmlFor="car" className="form-group">
+            Car:
+            <select
+              value={option}
+              onChange={(e) => {
+                setOption(e.target.value);
+              }}
+              id="cars"
+            >
+              {
+
+              cars.map((car) => (
+                <option key={car.id} value={car.id}>{car.name}</option>
+              ))
+            }
+            </select>
+          </label>
+          <div>
+            Date
+            <DatePicker
+              selected={selectedDate}
+              onSelect={(x) => setSelectedDate(x)}
+              dateFormat="dd/MM/yyyy"
+              showYearDropdown
+              scrollableMonthYearDropdown
+              required
+            />
+          </div>
+
+          <button type="submit" onClick={() => { handelEdit(detailsId); }} className="btn btn-primary mt-2">Submit</button>
         </form>
       </div>
     </div>

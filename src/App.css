@@ -245,6 +245,10 @@ li {
   transition: 0.3s;
 }
 
+.add {
+  height: 100vh;
+}
+
 @media screen and (min-width: 768px) {
   .nav-container-hidden,
   .nav-container {

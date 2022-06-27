@@ -20,17 +20,30 @@ const MyReservations = () => {
       <table className="table table-borderless w-75">
         <thead>
           <tr>
-            <td>Id</td>
-            <td>City</td>
-            <td>data</td>
-            <td className="d-flex justify-content-center">Operation</td>
+            <th>Id</th>
+            <th>City</th>
+            <th>Data</th>
+            <th>Car</th>
+            <th className="d-flex justify-content-center">Operation</th>
           </tr>
         </thead>
         <tbody>
           {
             reservations.map((reservation) => {
-              const { id, city, date } = reservation;
-              return (<Reservation key={reservation.id} id={id} city={city} date={date} />);
+              /* eslint-disable */ 
+
+              const {
+                car_id, id, city, date,
+              } = reservation;
+              return (
+                <Reservation
+                  key={reservation.id}
+                  id={id}
+                  city={city}
+                  date={date}
+                  carId={car_id}
+                />
+              );
             })
 }
         </tbody>

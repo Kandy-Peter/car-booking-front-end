@@ -89,7 +89,7 @@ const Homepage = () => {
         <Slider {...settings}>
           {
             cars.map((car) => (
-              <Link to={`car/${car.name}`} key={car.id}>
+              <Link to={`car/${car.id}`} key={car.id}>
                 <div className="car-card">
                   <img src={Jeep} alt={car.name} />
                   <div className="descript">

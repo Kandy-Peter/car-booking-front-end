@@ -1,52 +1,57 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fecthCars } from '../redux/Cars/cars';
+import { getUniqueCar } from '../redux/Cars/carDetail';
 import Jeep from '../assets/images/7vylxq_large.png';
 import '../styles/card_details.scss';
 
 const CarDetails = () => {
-  const cars = useSelector((state) => state.reducers.cars);
   const dispatch = useDispatch();
-
+  const { id } = useParams();
+  const cars = useSelector((state) => state.uniqueCarReducer);
   useEffect(() => {
-    dispatch(fecthCars);
+    dispatch(getUniqueCar(id));
   }, []);
-
-  const { name } = useParams();
-  const selectedCar = cars?.filter((car) => car.name === name);
 
   return (
     <>
-      {selectedCar.map((item) => (
-        <div className="car_container" key={item.id}>
-          <img src={Jeep} alt={item.name} />
-          <div className="car_details">
-            <h2>{item.name.slice(0, 9)}</h2>
-            <ul>
-              <li>
-                model:
-                {' '}
-                {item.model}
-              </li>
-              <li className="price">
-                price:
-                {' '}
-                {item.per_day_amount}
+      <div className="car_container" key={cars.id}>
+        <img src={Jeep} alt={cars.name} />
+        <div className="car_details">
+          <h2>{cars.name}</h2>
+          <ul>
+            <li>
+              Model:
+              {' '}
+              <span>{cars.model}</span>
+            </li>
+            <li className="price">
+              Price:
+              {' '}
+              <span>
+                {cars.per_day_amount}
                 $
-              </li>
-              <li>
-                {item.reserved === false ? (
-                  <li>availability: No available</li>
-                ) : (
-                  <li>availability: available</li>
-                )}
-              </li>
-            </ul>
-            <span>Let us satisfy your desire!</span>
-          </div>
+              </span>
+            </li>
+            <li>
+              Availability:
+              {cars.reserved === false ? (
+                <span>No available</span>
+              ) : (
+                <span>available</span>
+              )}
+            </li>
+          </ul>
+          <span className="desc_short">Let us satisfy your desire!</span>
+          <button
+            type="button"
+            className="reserve-btn"
+            onClick={() => { window.location.href = `./reservation/${cars.id}/reservation_form`; }}
+          >
+            Reserve Car
+          </button>
         </div>
-      ))}
+      </div>
     </>
   );
 };

@@ -20,8 +20,8 @@ export function SampleNextArrow(props) {
         alignItems: 'center',
         paddingLeft: '10px',
         position: 'absolute',
-        right: '-65px',
-        zIndex: 100,
+        right: '-25px',
+        zIndex: 50,
       }}
       onClick={onClick}
       onKeyPress={onKeyPressHandler}
@@ -51,8 +51,8 @@ export function SamplePrevArrow(props) {
         alignItems: 'center',
         paddingRight: '10px',
         position: 'absolute',
-        left: '-5px',
-        zIndex: 100,
+        left: '0px',
+        zIndex: 50,
       }}
       onClick={onClick}
       onKeyPress={onKeyPressHandler}

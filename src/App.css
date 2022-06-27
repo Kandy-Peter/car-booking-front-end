@@ -7,6 +7,7 @@
 .nav-container-hidden {
   transform: translateX(-101%);
   z-index: 100;
+  background: #fff;
 }
 
 .nav-container {
@@ -78,9 +79,11 @@
   .nav-container-hidden,
   .nav-container {
     transform: translateX(0);
-    position: static;
-    float: left;
+    position: absolute;
+    left: 0;
+    top: 0;
     border-right: 1px solid rgba(0, 0, 0, 0.2);
+    width: 17%;
   }
 
   .nav-btns {

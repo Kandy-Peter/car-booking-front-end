@@ -52,7 +52,7 @@
       justify-content: space-between;
       align-items: center;
       border-radius: 50%;
-      margin: 50px;
+      margin: 10px;
       box-shadow: 2px 1px 10px #e0e0e0;
       background-color: #fcfcfc;
       overflow: hidden;
@@ -66,6 +66,23 @@
         background-color: #97bf0f;
         color: #fcfcfc;
         padding-top: 7px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home-container {
+    width: 100%;
+    position: relative;
+    padding-top: 3rem;
+    right: 0;
+
+    .car-card {
+      height: 210px;
+
+      .descript {
+        width: 100%;
       }
     }
   }

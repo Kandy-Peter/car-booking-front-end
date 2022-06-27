@@ -17,10 +17,11 @@ const Homepage = () => {
     className: 'center',
     centerMode: true,
     infinite: true,
-    centerPadding: '100px',
+    centerPadding: '60px',
     dots: true,
     slidesToShow: 3,
-    slidesToScroll: 2,
+    slidesToScroll: 3,
+    swipeToSlide: true,
     lazyLoad: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -29,8 +30,8 @@ const Homepage = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           infinite: true,
           dots: true,
         },
@@ -38,9 +39,12 @@ const Homepage = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          nextArrow: false,
+          prevArrow: false,
+          centerPadding: '0',
         },
       },
       {
@@ -50,6 +54,7 @@ const Homepage = () => {
           slidesToScroll: 1,
           nextArrow: false,
           prevArrow: false,
+          centerPadding: '60px',
         },
       },
     ],
@@ -59,7 +64,7 @@ const Homepage = () => {
     <div className="home-container">
       <h1>Available Cars</h1>
       <h5>Check our best available cars</h5>
-      <div className="cards-container caroussel">
+      <div className="cards-container">
         <Slider {...settings}>
           {!cars.length ? <Loading /> : (
             cars.map((car) => (

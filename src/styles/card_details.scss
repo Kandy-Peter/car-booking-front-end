@@ -1,0 +1,38 @@
+.car_container {
+  width: 80%;
+  position: absolute;
+  height: 100%;
+  right: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+  img {
+    width: 60%;
+  }
+
+  .car_details {
+    width: 35%;
+    text-align: right;
+    
+    h2 {
+      margin-bottom: 0.8rem;
+    }
+
+    ul {
+      li {
+        text-align: left;
+        padding: 10px;
+        list-style-type: none;
+
+        &:nth-child(n-3) {
+         
+        }
+      }
+    }
+  }
+
+}

@@ -4,32 +4,24 @@ import { getLocalStorage } from '../logics/localStore';
 import { carsURL } from '../logics/urls';
 
 const AddCar = () => {
-  // const sendToAPI = (data) => {
-  //   fetch(carsURL, {
-  //     body: JSON.stringify(data),
-  //     method: 'POST',
-  //   })
-  //     .then((response) => response.json())
-  //     .catch((error) => error);
-  // };
-
-  const sendToAPI = async (data) => {
+  const sendToAPI = async (data, form) => {
     const response = await axios.post(carsURL, data);
-    console.log(response);
+    if (response.status === 200) {
+      form.reset();
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const inputField = e.target;
     const data = {
       name: e.target.name.value,
       model: e.target.model.value,
       car_image: e.target.image.value,
       reserved: true,
-      per_day_amount: e.target.per_day_amount.value,
+      per_day_amount: e.target.perDayAmount.value,
       user_id: getLocalStorage().user_id,
     };
-    sendToAPI(data);
+    sendToAPI(data, e.target);
   };
 
   return (

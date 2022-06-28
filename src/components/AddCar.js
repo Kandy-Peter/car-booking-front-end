@@ -1,12 +1,18 @@
 import axios from 'axios';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { getLocalStorage } from '../logics/localStore';
 import { carsURL } from '../logics/urls';
+import { addCar } from '../redux/Reservations/reservation';
 
 const AddCar = () => {
+  const dispatch = useDispatch();
+
   const sendToAPI = async (data, form) => {
     const response = await axios.post(carsURL, data);
     if (response.status === 200) {
+      dispatch(addCar(response.data));
+
       form.reset();
     }
   };

@@ -1,23 +1,18 @@
 import React from 'react';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteCar } from '../redux/Reservations/reservation';
 
 const DeleteCar = () => {
-  const cars = [
-    {
-      id: 1, name: 'Bughatti', model: 'Chiron', car_image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Bugatti_Chiron_%2836559710091%29.jpg/800px-Bugatti_Chiron_%2836559710091%29.jpg',
-    },
-    {
-      id: 2, name: 'Ford', model: 'GT', car_image: 'https://www.topgear.com/sites/default/files/images/news-article/2019/07/f58e39bda9d8a390cee4dc25dfab297b/2006-ford-gt_0.jpg',
-    },
-    {
-      id: 3, name: 'Ferrari', model: 'SF90 Stradale', car_image: 'https://stimg.cardekho.com/images/carexteriorimages/930x620/Ferrari/SF90-Stradale/7858/1591619661237/front-left-side-47.jpg',
-    },
-    {
-      id: 4, name: 'Lotus', model: 'Evija', car_image: 'https://img.gta5-mods.com/q95/images/2020-lotus-evija-add-on-fivem/8e2749-EVE-20211127212027.010.png',
-    },
-    {
-      id: 5, name: 'Lamborghini', model: 'Aventador', car_image: 'https://stimg.cardekho.com/images/carexteriorimages/630x420/Lamborghini/Aventador/6721/Lamborghini-Aventador-SVJ/1621849426405/front-left-side-47.jpg?tr=w-135',
-    },
-  ];
+  const cars = useSelector((state) => state.allReservation.cars);
+  const dispatch = useDispatch();
+  const deleteOperation = (id) => {
+    axios.delete(`http://[::1]:4000/api/v1/cars/${id}`);
+  };
+  const handelDelete = (id) => {
+    deleteOperation(id);
+    dispatch(deleteCar(id));
+  };
   return (
     <section>
       <ul className="cars-container">
@@ -31,7 +26,7 @@ const DeleteCar = () => {
               {' '}
               {car.model}
             </span>
-            <button type="button" className="car-dlt-btn">Delete</button>
+            <button className="btn btn-danger" type="button" onClick={() => handelDelete(car.id)}> Delete</button>
           </div>
         </li>
       ))

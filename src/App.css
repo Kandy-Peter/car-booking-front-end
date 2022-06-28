@@ -208,7 +208,6 @@ li {
 
 .choose-car-img-label {
   font-size: 18px;
-  font-family: 900;
   margin-bottom: 5px;
 }
 
@@ -267,6 +266,10 @@ li {
 
 .add-car-input-field {
   margin-bottom: 20px;
+}
+
+.add {
+  height: 100vh;
 }
 
 @media screen and (min-width: 768px) {

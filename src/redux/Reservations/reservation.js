@@ -3,6 +3,7 @@ import { getLocalStorage } from '../../logics/localStore';
 const FETCH_DATA = 'FETCH_DATA';
 const DELETE_DATA = 'DELETE_DATA';
 const FETCH_CAR = 'FETCH_CAR';
+const DELETE_CAR = 'DELETE_CAR';
 
 // Initial State
 const initialState = {
@@ -25,6 +26,11 @@ export const setCars = (cars) => ({
   payload: cars,
 
 });
+export const deleteCar = (id) => ({
+  type: DELETE_CAR,
+  payload: id,
+
+});
 // reducer
 
 const reservationReducers = (state = initialState, action) => {
@@ -45,6 +51,12 @@ const reservationReducers = (state = initialState, action) => {
       return {
         ...state,
         cars: action.payload,
+      };
+    case DELETE_CAR:
+
+      return {
+        ...state,
+        cars: state.cars.filter((item) => item.id !== action.payload),
       };
     default:
       return state;

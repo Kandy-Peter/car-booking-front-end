@@ -65,7 +65,7 @@ const PopUp = ({
             />
           </div>
 
-          <button type="submit" onClick={() => { handelEdit(detailsId); }} className="btn btn-primary mt-2">Submit</button>
+          <button type="submit" onClick={() => { handelEdit(detailsId); }} className="form-submit-btn">Submit</button>
         </form>
       </div>
     </div>

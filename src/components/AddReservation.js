@@ -78,7 +78,7 @@ const AddReservation = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary mt-2" onClick={() => { handelCreate(); }}>Submit</button>
+        <button type="submit" className="form-submit-btn" onClick={() => { handelCreate(); }}>Submit</button>
       </form>
     </section>
   );

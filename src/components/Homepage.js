@@ -94,7 +94,7 @@ const Homepage = () => {
                   <img src={Jeep} alt={car.name} />
                   <div className="descript">
                     <h2>
-                      {car.name.slice(0, 9)}
+                      {car.name}
                     </h2>
                   </div>
                 </div>

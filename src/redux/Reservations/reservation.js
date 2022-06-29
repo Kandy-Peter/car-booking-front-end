@@ -1,4 +1,4 @@
-import { getLocalStorage } from '../../logics/localStore';
+// import { getLocalStorage } from '../../logics/localStore';
 // Action Types
 const FETCH_DATA = 'FETCH_DATA';
 const DELETE_DATA = 'DELETE_DATA';
@@ -44,9 +44,7 @@ const reservationReducers = (state = initialState, action) => {
     case FETCH_DATA:
       return {
         ...state,
-        reservation: action.payload.filter(
-          (item) => item.user_id.toString() === getLocalStorage().user_id,
-        ),
+        reservation: action.payload,
       };
     case DELETE_DATA:
 
@@ -76,3 +74,6 @@ const reservationReducers = (state = initialState, action) => {
 };
 
 export default reservationReducers;
+// .filter(
+//   (item) => item.user_id.toString() === getLocalStorage().user_id,
+// ),

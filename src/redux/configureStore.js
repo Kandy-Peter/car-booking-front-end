@@ -14,3 +14,6 @@ const store = createStore(reducers, applyMiddleware(logger, thunk));
 store.dispatch(fecthCars());
 
 export default store;
+// const reducer = combineReducers({
+//   reducers,
+//   uniqueCarReducer,

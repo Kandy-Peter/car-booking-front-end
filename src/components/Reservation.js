@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteData, setCars } from '../redux/Reservations/reservation';
 import { fetchCars } from './AddReservation';
 import PopUp from './Popup/PopUp';
+import { reservationsURL } from '../logics/urls';
 
 const Reservation = ({
   id, city, date, carId,
@@ -22,11 +23,11 @@ const Reservation = ({
     });
   }
   const deleteOperation = (id) => {
-    axios.delete(`http://[::1]:4000/api/v1/reservation/${id}`);
+    axios.delete(`${reservationsURL}/${id}`);
   };
 
   const showOperation = async (id) => {
-    const response = await axios.get(`http://[::1]:4000/api/v1/reservation/${id}`);
+    const response = await axios.get(`${reservationsURL}/${id}`);
     setDetails(response.data.data);
   };
 

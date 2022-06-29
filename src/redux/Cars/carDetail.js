@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { carsURL } from '../../logics/urls';
 
 const FETCH_UNIQUE_CAR = 'FETCH_UNIQUE_CAR';
 
@@ -10,7 +11,7 @@ export const getCar = (payload) => ({
 });
 
 export const getUniqueCar = (id) => async (dispatch) => {
-  const response = await axios.get(`http://127.0.0.1:4000/api/v1/cars/${id}`);
+  const response = await axios.get(`${carsURL}/${id}`);
   const request = await response.data;
   dispatch(getCar(request));
 };

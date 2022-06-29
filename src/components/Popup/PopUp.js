@@ -4,8 +4,8 @@ import './popup.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useSelector } from 'react-redux';
-
 import PropTypes from 'prop-types';
+import { reservationsURL } from '../../logics/urls';
 
 const PopUp = ({
   detailsId, detailsCity, trigger, setTrigger,
@@ -15,7 +15,7 @@ const PopUp = ({
   const [updatedCity, setCity] = useState(detailsCity);
   const [option, setOption] = useState(1);
   const upDateOperation = async (id) => {
-    await axios.put(`http://[::1]:4000/api/v1/reservation/${id}`, {
+    await axios.put(`${reservationsURL}/${id}`, {
       city: updatedCity,
       date: selectedDate,
       car_id: option,

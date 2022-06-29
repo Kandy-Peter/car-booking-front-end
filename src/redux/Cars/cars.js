@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { carsURL } from '../../logics/urls';
 
 const FETCH_DATA = 'FETCH_DATA';
 
@@ -12,7 +13,7 @@ const fetchData = (payload) => ({
 });
 
 export const fecthCars = () => async (dispatch) => {
-  const response = await axios.get('http://127.0.0.1:4000/api/v1/cars');
+  const response = await axios.get(carsURL);
   const request = await response.data;
   dispatch(fetchData(request));
 };

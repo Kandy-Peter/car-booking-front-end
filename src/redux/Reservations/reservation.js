@@ -44,7 +44,9 @@ const reservationReducers = (state = initialState, action) => {
     case FETCH_DATA:
       return {
         ...state,
-        reservation: action.payload.filter((item) => item.user_id === getLocalStorage().user_id),
+        reservation: action.payload.filter(
+          (item) => item.user_id.toString() === getLocalStorage().user_id,
+        ),
       };
     case DELETE_DATA:
 
@@ -53,7 +55,6 @@ const reservationReducers = (state = initialState, action) => {
         reservation: state.reservation.filter((item) => item.id !== action.payload),
       };
     case FETCH_CAR:
-
       return {
         ...state,
         cars: action.payload,

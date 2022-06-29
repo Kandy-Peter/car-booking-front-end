@@ -5,14 +5,20 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../styles/Home.scss';
 import CarsHome from './car_cards';
-import { fecthCars } from '../redux/Cars/cars';
+import { fetchCars } from './AddReservation';
+import { setCars } from '../redux/Reservations/reservation';
 
 const Homepage = () => {
-  const cars = useSelector((state) => state.carReducers.cars);
+  const cars = useSelector((state) => state.allReservation.cars);
   const dispatch = useDispatch();
 
+  const handelFetchCars = () => {
+    fetchCars().then((response) => {
+      dispatch(setCars(response.data));
+    });
+  };
   useEffect(() => {
-    dispatch(fecthCars());
+    handelFetchCars();
   }, []);
 
   return (

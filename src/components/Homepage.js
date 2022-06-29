@@ -10,7 +10,7 @@ import Jeep from '../assets/images/7vylxq_large.png';
 import { SampleNextArrow, SamplePrevArrow } from './arrows';
 
 const Homepage = () => {
-  const cars = useSelector((state) => state.reducers.cars);
+  const cars = useSelector((state) => state.carReducers.cars);
 
   const settings = {
     className: 'center',

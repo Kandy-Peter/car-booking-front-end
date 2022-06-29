@@ -13,7 +13,7 @@ export const fetchCars = async () => {
 };
 const AddReservation = () => {
   const cars = useSelector((state) => state.allReservation.cars);
-  const [option, setOption] = useState(1);
+  const [option, setOption] = useState(cars[0].id);
   const [selectedDate, setSelectedDate] = useState(null);
   const [updatedCity, setCity] = useState();
   const dispatch = useDispatch();
@@ -62,9 +62,11 @@ const AddReservation = () => {
             {
 
               cars.map((car) => (
-                <option key={car.id} defaultValue={1} value={car.id}>{car.name}</option>
+                <option key={car.id} value={car.id}>{car.name}</option>
+
               ))
-            }
+}
+
           </select>
         </label>
         <div className="w-30">

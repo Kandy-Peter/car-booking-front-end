@@ -206,6 +206,17 @@ li {
   color: rgb(152, 190, 32);
 }
 
+.choose-car-img-label {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.add-car-btn {
+  padding: 10px 0;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
 .register-form-error-msg,
 .register-form-success-msg {
   font-size: 15px;
@@ -229,7 +240,8 @@ li {
 }
 
 .car-dlt-btn:hover,
-.form-submit-btn {
+.form-submit-btn,
+.add-car-btn {
   color: white;
   background-color: rgb(152, 190, 32);
   border: 1px solid white;
@@ -238,11 +250,22 @@ li {
 }
 
 .form-submit-btn:hover,
-.sign-out-btn:hover {
+.sign-out-btn:hover,
+.add-car-btn:hover {
   background-color: white;
   border: 1px solid rgb(152, 190, 32);
   color: rgb(152, 190, 32);
   transition: 0.3s;
+}
+
+.add-car-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.add-car-input-field {
+  margin-bottom: 20px;
 }
 
 .add {

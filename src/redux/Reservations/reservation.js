@@ -4,6 +4,7 @@ const FETCH_DATA = 'FETCH_DATA';
 const DELETE_DATA = 'DELETE_DATA';
 const FETCH_CAR = 'FETCH_CAR';
 const DELETE_CAR = 'DELETE_CAR';
+const ADD_CAR = 'ADD_CAR';
 
 // Initial State
 const initialState = {
@@ -29,6 +30,11 @@ export const setCars = (cars) => ({
 export const deleteCar = (id) => ({
   type: DELETE_CAR,
   payload: id,
+
+});
+export const addCar = (car) => ({
+  type: ADD_CAR,
+  payload: car,
 
 });
 // reducer
@@ -57,6 +63,11 @@ const reservationReducers = (state = initialState, action) => {
       return {
         ...state,
         cars: state.cars.filter((item) => item.id !== action.payload),
+      };
+    case ADD_CAR:
+      return {
+        ...state,
+        cars: [...state.cars, action.payload],
       };
     default:
       return state;

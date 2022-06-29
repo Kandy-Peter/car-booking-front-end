@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getUniqueCar } from '../redux/Cars/carDetail';
 import Jeep from '../assets/images/7vylxq_large.png';
 import '../styles/card_details.scss';
@@ -43,13 +43,14 @@ const CarDetails = () => {
             </li>
           </ul>
           <span className="desc_short">Let us satisfy your desire!</span>
-          <button
-            type="button"
-            className="reserve-btn"
-            onClick={() => { window.location.href = `./reservation/${cars.id}/reservation_form`; }}
-          >
-            Reserve Car
-          </button>
+          <Link to="/create_reservation">
+            <button
+              type="button"
+              className="reserve-btn"
+            >
+              Reserve Car
+            </button>
+          </Link>
         </div>
       </div>
     </>

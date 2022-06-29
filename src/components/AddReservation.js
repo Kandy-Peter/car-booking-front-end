@@ -5,7 +5,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getLocalStorage } from '../logics/localStore';
-import { setCars } from '../redux/Reservations/reservation';
+import { createReserve, setCars } from '../redux/Reservations/reservation';
+import { reservationsURL } from '../logics/urls';
 
 export const fetchCars = async () => {
   const response = await axios.get('http://[::1]:4000/api/v1/cars');
@@ -13,36 +14,40 @@ export const fetchCars = async () => {
 };
 const AddReservation = () => {
   const cars = useSelector((state) => state.allReservation.cars);
-  const [option, setOption] = useState(cars.length === 0 ? null : cars[0].id);
+  const [option, setOption] = useState(cars.length === 0 ? '' : cars[0].id);
   const [selectedDate, setSelectedDate] = useState(null);
   const [updatedCity, setCity] = useState();
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const createOperation = async () => {
-    await axios.post('http://[::1]:4000/api/v1/reservation', {
+    const response = await axios.post(reservationsURL, {
       user_id: getLocalStorage().user_id,
       city: updatedCity,
       date: selectedDate,
       car_id: option,
     });
+    if (response.status === 200) {
+      dispatch(createReserve(response.data.data));
+      navigate('/my_reservations');
+    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate('/my_reservations');
-  };
-  const handelCreate = () => {
     createOperation();
   };
+
   const handelFetchCars = () => {
     fetchCars().then((response) => {
       dispatch(setCars(response.data));
     });
   };
+
   useEffect(() => {
     handelFetchCars();
   }, []);
+
   return (
     <section className=" add .container w-100 d-flex vh-100 justify-content-center .align-items-center">
       <form onSubmit={handleSubmit} className=".container w-50 form  justify-content-center .align-items-center">
@@ -80,7 +85,7 @@ const AddReservation = () => {
             required
           />
         </div>
-        <button type="submit" className="form-submit-btn" onClick={() => { handelCreate(); }}>Submit</button>
+        <button type="submit" className="form-submit-btn">Submit</button>
       </form>
     </section>
   );

@@ -1,6 +1,7 @@
 // import { getLocalStorage } from '../../logics/localStore';
 // Action Types
 const FETCH_RESERV = 'FETCH_RESERV';
+const CREATE_RESERV = 'CREATE_RESERV';
 const DELETE_DATA = 'DELETE_DATA';
 const FETCH_CAR = 'FETCH_CAR';
 const DELETE_CAR = 'DELETE_CAR';
@@ -15,6 +16,11 @@ const initialState = {
 export const setData = (reservations) => ({
   type: FETCH_RESERV,
   payload: reservations,
+});
+
+export const createReserve = (reservation) => ({
+  type: CREATE_RESERV,
+  payload: reservation,
 });
 
 export const deleteData = (id) => ({
@@ -56,6 +62,11 @@ const reservationReducers = (state = initialState, action) => {
       return {
         ...state,
         cars: action.payload,
+      };
+    case CREATE_RESERV:
+      return {
+        ...state,
+        reservation: [...state.reservation, action.payload],
       };
     case DELETE_CAR:
 

@@ -14,9 +14,9 @@ const CarsHome = ({ cars }) => {
               <div className="car-card">
                 <img src={car.car_image} alt={car.name} />
                 <div className="descript">
-                  <h2>
+                  <p>
                     {car.name}
-                  </h2>
+                  </p>
                 </div>
               </div>
             </Link>
@@ -33,9 +33,9 @@ const CarsHome = ({ cars }) => {
                 <div className="car-card">
                   <img src={car.car_image} alt={car.name} />
                   <div className="descript">
-                    <h2>
+                    <p>
                       {car.name}
-                    </h2>
+                    </p>
                   </div>
                 </div>
               </Link>

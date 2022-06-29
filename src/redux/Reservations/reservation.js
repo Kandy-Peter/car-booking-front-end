@@ -1,6 +1,7 @@
-import { getLocalStorage } from '../../logics/localStore';
+// import { getLocalStorage } from '../../logics/localStore';
 // Action Types
-const FETCH_DATA = 'FETCH_DATA';
+const FETCH_RESERV = 'FETCH_RESERV';
+const CREATE_RESERV = 'CREATE_RESERV';
 const DELETE_DATA = 'DELETE_DATA';
 const FETCH_CAR = 'FETCH_CAR';
 const DELETE_CAR = 'DELETE_CAR';
@@ -13,8 +14,13 @@ const initialState = {
 };
 // Actions
 export const setData = (reservations) => ({
-  type: FETCH_DATA,
+  type: FETCH_RESERV,
   payload: reservations,
+});
+
+export const createReserve = (reservation) => ({
+  type: CREATE_RESERV,
+  payload: reservation,
 });
 
 export const deleteData = (id) => ({
@@ -41,12 +47,10 @@ export const addCar = (car) => ({
 
 const reservationReducers = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_DATA:
+    case FETCH_RESERV:
       return {
         ...state,
-        reservation: action.payload.filter(
-          (item) => item.user_id.toString() === getLocalStorage().user_id,
-        ),
+        reservation: action.payload,
       };
     case DELETE_DATA:
 
@@ -58,6 +62,11 @@ const reservationReducers = (state = initialState, action) => {
       return {
         ...state,
         cars: action.payload,
+      };
+    case CREATE_RESERV:
+      return {
+        ...state,
+        reservation: [...state.reservation, action.payload],
       };
     case DELETE_CAR:
 
@@ -76,3 +85,6 @@ const reservationReducers = (state = initialState, action) => {
 };
 
 export default reservationReducers;
+// .filter(
+//   (item) => item.user_id.toString() === getLocalStorage().user_id,
+// ),

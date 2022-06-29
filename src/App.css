@@ -21,12 +21,15 @@ li {
 
 .nav-container-hidden {
   transform: translateX(-101%);
+  z-index: 100;
+  background: #fff;
 }
 
 .nav-container {
   background-color: white;
   transform: translateX(0%);
   border: 1px solid rgba(0, 0, 0, 0.2);
+  z-index: 100;
 }
 
 .nav-logo-img-container {
@@ -44,7 +47,7 @@ li {
   position: fixed;
   top: 0;
   height: 100vh;
-  width: 180px;
+  width: 200px;
   transition: all 250ms ease-in-out;
   padding-left: 10px;
 }
@@ -276,6 +279,10 @@ li {
   .nav-container-hidden,
   .nav-container {
     transform: translateX(0);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 17%;
     float: left;
     border-right: 1px solid rgba(0, 0, 0, 0.2);
     margin-right: 20px;
@@ -286,7 +293,7 @@ li {
   }
 
   section {
-    padding: 0 20px 0 200px;
+    padding: 0 20px 0 250px;
   }
 
   .car-card {

@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import Jeep from '../assets/images/7vylxq_large.png';
 import settings from './caroussel';
 
 const CarsHome = ({ cars }) => {
@@ -11,12 +10,13 @@ const CarsHome = ({ cars }) => {
       <div className="caroussel_row">
         {
           cars.map((car) => (
-            <Link to={`car/${car.id}`} key={car.id}>
+            <Link id={car.id} to={`car/${car.id}`} key={car.id}>
               <div className="car-card">
-                <img src={Jeep} alt={car.name} />
+                <img src={car.car_image} alt={car.name} />
                 <div className="descript">
                   <h2>
-                    {car.name.slice(0, 9)}
+                    {console.log(car)}
+                    {car.name}
                   </h2>
                 </div>
               </div>
@@ -30,12 +30,12 @@ const CarsHome = ({ cars }) => {
     <Slider {...settings}>
       {
             cars.map((car) => (
-              <Link to={`car/${car.id}`} key={car.id}>
+              <Link id={car.id} to={`car/${car.id}`} key={car.id}>
                 <div className="car-card">
-                  <img src={Jeep} alt={car.name} />
+                  <img src={car.car_image} alt={car.name} />
                   <div className="descript">
                     <h2>
-                      {car.name.slice(0, 9)}
+                      {car.name}
                     </h2>
                   </div>
                 </div>

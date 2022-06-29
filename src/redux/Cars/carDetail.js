@@ -10,7 +10,7 @@ export const getCar = (payload) => ({
 });
 
 export const getUniqueCar = (id) => async (dispatch) => {
-  const response = await axios.get(`http://127.0.0.1:3000/api/v1/cars/${id}`);
+  const response = await axios.get(`http://127.0.0.1:4000/api/v1/cars/${id}`);
   const request = await response.data;
   dispatch(getCar(request));
 };

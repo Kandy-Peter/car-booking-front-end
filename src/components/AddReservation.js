@@ -62,7 +62,7 @@ const AddReservation = () => {
             {
 
               cars.map((car) => (
-                <option key={car.id} value={car.id}>{car.name}</option>
+                <option key={car.name} value={car.id}>{car.name}</option>
 
               ))
 }

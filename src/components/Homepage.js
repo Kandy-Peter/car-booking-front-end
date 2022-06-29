@@ -10,7 +10,7 @@ import Jeep from '../assets/images/7vylxq_large.png';
 import settings from './caroussel';
 
 const Homepage = () => {
-  const cars = useSelector((state) => state.reducers.cars);
+  const cars = useSelector((state) => state.carReducers.cars);
 
   return (
     <div className="home-container">
@@ -25,7 +25,7 @@ const Homepage = () => {
                   <img src={Jeep} alt={car.name} />
                   <div className="descript">
                     <h2>
-                      {car.name.slice(0, 9)}
+                      {car.name}
                     </h2>
                   </div>
                 </div>

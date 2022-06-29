@@ -4,6 +4,21 @@
   box-sizing: border-box;
 }
 
+button,
+input[type="button"],
+input[type="submit"],
+a {
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+.authentication-section {
+  margin-top: 100px;
+}
+
 .nav-container-hidden {
   transform: translateX(-101%);
   z-index: 100;
@@ -53,7 +68,11 @@
   height: 250px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+
+.logged-out {
+  justify-content: flex-end;
 }
 
 .single-nav-link {
@@ -69,10 +88,191 @@
 .single-nav-link,
 .single-nav-link-active {
   text-decoration: none;
-  padding: 5px 0 5px 5px;
+  padding: 11px 0 35px 5px;
   height: 35px;
   font-size: 20px;
   font-weight: bold;
+}
+
+.sign-out-btn {
+  position: absolute;
+  bottom: 15px;
+  left: 35%;
+  height: 30px;
+  width: 70px;
+  margin-left: -10px;
+  border: none;
+  color: white;
+  background: rgb(152, 190, 32);
+  font-weight: bold;
+}
+
+.cars-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 20px;
+}
+
+.car-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px 5px;
+  background-color: rgb(152, 190, 32);
+  border-radius: 5px;
+}
+
+.car-card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  transition: 0.3s;
+}
+
+.car-image {
+  width: 100%;
+  border-radius: 5px;
+  height: 140px;
+  object-fit: cover;
+}
+
+.car-details {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.car-title {
+  margin: 12px 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.car-dlt-btn {
+  padding: 5px 10px;
+  background-color: white;
+  border: 1px solid rgb(152, 190, 32);
+  border-radius: 5px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.register-page-heading,
+.login-page-heading {
+  text-align: center;
+  font-size: 39px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#registeration-form,
+#login-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.input-field,
+.form-submit-btn {
+  margin-top: 12px;
+  padding: 10px 0;
+}
+
+.input-field {
+  margin-top: 12px;
+  padding: 10px 5px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(152, 190, 32);
+  font-weight: bold;
+  transition: 0.1s;
+  font-size: 18px;
+}
+
+.input-field:focus {
+  border-bottom: 3px solid rgb(152, 190, 32);
+}
+
+.input-field-red:focus {
+  border-bottom: 3px solid red;
+}
+
+.form-submit-btn,
+.sign-out-btn {
+  border-radius: 5px;
+}
+
+.register-form-error-msg {
+  color: red;
+}
+
+.register-form-success-msg {
+  color: rgb(152, 190, 32);
+}
+
+.choose-car-img-label {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.add-car-btn {
+  padding: 10px 0;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.register-form-error-msg,
+.register-form-success-msg {
+  font-size: 15px;
+  text-align: center;
+  margin: 12px 0;
+}
+
+.login-to-register,
+.register-to-login {
+  text-align: center;
+  margin: 12px 0;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.login-to-register-link,
+.register-to-login-link {
+  text-decoration: none;
+  color: black;
+  margin-left: 3px;
+  font-weight: 500;
+}
+
+.car-dlt-btn:hover,
+.form-submit-btn,
+.add-car-btn {
+  color: white;
+  background-color: rgb(152, 190, 32);
+  border: 1px solid white;
+  transition: 0.3s ease-in-out;
+  font-weight: bolder;
+}
+
+.form-submit-btn:hover,
+.sign-out-btn:hover,
+.add-car-btn:hover {
+  background-color: white;
+  border: 1px solid rgb(152, 190, 32);
+  color: rgb(152, 190, 32);
+  transition: 0.3s;
+}
+
+.add-car-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.add-car-input-field {
+  margin-bottom: 20px;
+}
+
+.add {
+  height: 100vh;
 }
 
 @media screen and (min-width: 768px) {
@@ -84,9 +284,20 @@
     top: 0;
     border-right: 1px solid rgba(0, 0, 0, 0.2);
     width: 17%;
+    /* float: left;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    margin-right: 20px; */
   }
 
   .nav-btns {
     display: none;
+  }
+
+  section {
+    padding: 0 20px 0 200px;
+  }
+
+  .car-card {
+    width: 250px;
   }
 }

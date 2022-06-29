@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import PropTypes from 'prop-types';
+
+import { Link, useParams } from 'react-router-dom';
 import { getUniqueCar } from '../redux/Cars/carDetail';
 import '../styles/card_details.scss';
 
-const CarDetails = ({ id }) => {
+const CarDetails = () => {
   const dispatch = useDispatch();
+  const id = useParams();
+  const idCAr = Number(id.id);
   const cars = useSelector((state) => state.uniqueCarReducer);
   useEffect(() => {
-    dispatch(getUniqueCar(id));
+    dispatch(getUniqueCar(idCAr));
   }, []);
 
   return (
@@ -56,7 +60,3 @@ const CarDetails = ({ id }) => {
 };
 
 export default CarDetails;
-
-CarDetails.propTypes = {
-  id: PropTypes.number.required
-};

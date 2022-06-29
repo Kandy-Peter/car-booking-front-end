@@ -15,7 +15,6 @@ const CarsHome = ({ cars }) => {
                 <img src={car.car_image} alt={car.name} />
                 <div className="descript">
                   <h2>
-                    {console.log(car)}
                     {car.name}
                   </h2>
                 </div>
@@ -30,7 +29,7 @@ const CarsHome = ({ cars }) => {
     <Slider {...settings}>
       {
             cars.map((car) => (
-              <Link id={car.id} to={`car/${car.id}`} key={car.id}>
+              <Link to={`car/${car.id}`} key={car.id}>
                 <div className="car-card">
                   <img src={car.car_image} alt={car.name} />
                   <div className="descript">

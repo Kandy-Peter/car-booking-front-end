@@ -6,10 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getLocalStorage } from '../logics/localStore';
 import { createReserve, setCars } from '../redux/Reservations/reservation';
-import { reservationsURL } from '../logics/urls';
+import { reservationsURL, carsURL } from '../logics/urls';
 
 export const fetchCars = async () => {
-  const response = await axios.get('http://[::1]:4000/api/v1/cars');
+  const response = await axios.get(carsURL);
   return response;
 };
 const AddReservation = () => {

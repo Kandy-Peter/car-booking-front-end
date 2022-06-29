@@ -3,12 +3,13 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import Reservation from './Reservation';
 import { setData } from '../redux/Reservations/reservation';
+import { reservationsURL } from '../logics/urls';
 
 const MyReservations = () => {
   const reservations = useSelector((state) => state.allReservation.reservation);
   const dispatch = useDispatch();
   const fetchReservations = async () => {
-    const response = await axios.get('http://[::1]:4000/api/v1/reservation');
+    const response = await axios.get(reservationsURL);
     dispatch(setData(response.data.data));
   };
   useEffect(() => {

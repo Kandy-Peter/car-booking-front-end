@@ -2,12 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteCar } from '../redux/Reservations/reservation';
+import { carsURL } from '../logics/urls';
 
 const DeleteCar = () => {
   const cars = useSelector((state) => state.allReservation.cars);
   const dispatch = useDispatch();
   const deleteOperation = (id) => {
-    axios.delete(`http://[::1]:4000/api/v1/cars/${id}`);
+    axios.delete(`${carsURL}/${id}`);
   };
   const handelDelete = (id) => {
     deleteOperation(id);

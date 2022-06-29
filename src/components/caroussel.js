@@ -1,3 +1,4 @@
+import React from 'react';
 import { SampleNextArrow, SamplePrevArrow } from './arrows';
 
 const settings = {

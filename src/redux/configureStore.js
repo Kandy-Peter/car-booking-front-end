@@ -1,19 +1,16 @@
-import { combineReducers, applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import logger from 'redux-logger';
-import reducers, { fecthCars } from './Cars/cars';
+import thunk from 'redux-thunk';
 import uniqueCarReducer from './Cars/carDetail';
+import carReducers, { fecthCars } from './Cars/cars';
+import reservationReducers from './Reservations/reservation';
+import userReducer from './user/user';
 
-const reducer = combineReducers({
-  reducers,
-  uniqueCarReducer,
+const reducers = combineReducers({
+  carReducers, userReducer, allReservation: reservationReducers, uniqueCarReducer,
 });
 
-const store = createStore(
-  reducer,
-  applyMiddleware(thunk, logger),
-);
-
+const store = createStore(reducers, applyMiddleware(logger, thunk));
 store.dispatch(fecthCars());
 
 export default store;

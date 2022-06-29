@@ -12,12 +12,12 @@ const fetchData = (payload) => ({
 });
 
 export const fecthCars = () => async (dispatch) => {
-  const response = await axios.get('http://127.0.0.1:3000/api/v1/cars');
+  const response = await axios.get('http://127.0.0.1:4000/api/v1/cars');
   const request = await response.data;
   dispatch(fetchData(request));
 };
 
-const reducers = (state = initialState, action) => {
+const carReducers = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_DATA:
       return {
@@ -29,4 +29,4 @@ const reducers = (state = initialState, action) => {
   }
 };
 
-export default reducers;
+export default carReducers;

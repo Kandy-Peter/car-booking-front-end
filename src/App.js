@@ -9,9 +9,11 @@ import AddReservation from './components/AddReservation';
 import MyReservations from './components/MyReservations';
 import Loading from './components/Loading';
 import CarDetails from './components/CarDetails';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 function App() {
-  const cars = useSelector((state) => state.reducers.cars);
+  const cars = useSelector((state) => state.carReducers.cars);
   return (
     <>
       <Navbar />
@@ -26,6 +28,8 @@ function App() {
         <Route path="/delete_cars" element={<DeleteCar />} />
         <Route path="/create_reservation" element={<AddReservation />} />
         <Route path="/my_reservations" element={<MyReservations />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registeration" element={<Signup />} />
       </Routes>
     </>
   );

@@ -13,7 +13,7 @@ export const fetchCars = async () => {
 };
 const AddReservation = () => {
   const cars = useSelector((state) => state.allReservation.cars);
-  const [option, setOption] = useState(cars[0].id);
+  const [option, setOption] = useState();
   const [selectedDate, setSelectedDate] = useState(null);
   const [updatedCity, setCity] = useState();
   const dispatch = useDispatch();

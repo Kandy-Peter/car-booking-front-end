@@ -8,7 +8,7 @@ Book Cars frontend is react frontend application for car booking. This applicati
 
 ## Link Demo
 
-[Cick here to get live demo]()
+[Live demo link](https://car-booking-front-end.herokuapp.com/)
 
 ## Built With
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteCar } from '../redux/Reservations/reservation';
 import { carsURL } from '../logics/urls';
+import { getLocalStorage } from '../logics/localStore';
 
 const DeleteCar = () => {
   const cars = useSelector((state) => state.allReservation.cars);
@@ -18,19 +19,23 @@ const DeleteCar = () => {
     <section>
       <ul className="cars-container">
         {
-      cars.map((car) => (
-        <li className="car-card" key={car.id}>
-          <img className="car-image" src={car.car_image} alt="car_image" />
-          <div className="car-details">
-            <span className="car-title">
-              {car.name}
-              {' '}
-              {car.model}
-            </span>
-            <button className="btn btn-danger" type="button" onClick={() => handelDelete(car.id)}> Delete</button>
-          </div>
-        </li>
-      ))
+      cars.map((car) => {
+        if (car.user_id === getLocalStorage().user_id) {
+          return (
+            <li className="car-card" key={car.id}>
+              <img className="car-image" src={car.car_image} alt="car_image" />
+              <div className="car-details">
+                <span className="car-title">
+                  {car.name}
+                  {' '}
+                  {car.model}
+                </span>
+                <button className="btn btn-danger" type="button" onClick={() => handelDelete(car.id)}> Delete</button>
+              </div>
+            </li>
+          );
+        }
+      })
     }
       </ul>
     </section>

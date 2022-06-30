@@ -78,7 +78,7 @@ const AddReservation = () => {
           Date:
           <DatePicker
             selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
+            onChange={(date) => setSelectedDate(new Date(`${date.getMonth()}/${date.getDate() + 1}/${date.getFullYear()}`))}
             dateFormat="dd/MM/yyyy"
             showYearDropdown
             scrollableMonthYearDropdown

@@ -1,4 +1,3 @@
-// import { setLocalStorage } from '../../logics/localStore';
 import userURL from '../../logics/urls';
 
 const FETCH_USERS = 'users/FETCH_USERS';

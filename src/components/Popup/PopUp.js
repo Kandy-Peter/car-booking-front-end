@@ -57,7 +57,7 @@ const PopUp = ({
             Date
             <DatePicker
               selected={selectedDate}
-              onSelect={(x) => setSelectedDate(x)}
+              onSelect={(date) => setSelectedDate(new Date(`${date.getMonth()}/${date.getDate() + 1}/${date.getFullYear()}`))}
               dateFormat="dd/MM/yyyy"
               showYearDropdown
               scrollableMonthYearDropdown

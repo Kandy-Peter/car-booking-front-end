@@ -16,15 +16,17 @@ const Login = () => {
   const authenticateUser = (user) => {
     const error = { error: 'User not found' };
     try {
-      store.forEach((storeUser) => {
+      store.forEach((storeUser, index) => {
         if (user.email === storeUser.email && user.password === storeUser.password) {
           setErrorMsg('');
           setLocalStorage({ user_id: storeUser.id, loggedIn: true });
           navigate('/');
           throw error;
-        } if (user.email !== storeUser.email || user.password !== storeUser.password) {
-          setErrorMsg('Invalid User');
-          throw error;
+        } if (index === store.length - 1) {
+          if (user.email !== storeUser.email || user.password !== storeUser.password) {
+            setErrorMsg('Invalid User');
+            throw error;
+          }
         }
       });
     } catch (e) {
